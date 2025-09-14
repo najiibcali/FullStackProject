@@ -1,0 +1,26 @@
+
+const express = require("express")
+const cors = require("cors")
+const mongoose = require("mongoose")
+const ProductRouter = require("./Routes/ProductRoutes")
+const CustomerRouter = require("./Routes/CustomerRoutes")
+const OrderRouter = require("./Routes/OrderRouter")
+const UserRouter = require("./Routes/userRouter")
+const CodsiRouter = require("./Routes/CodsiRouter")
+const AdminRouter = require("./Routes/AdminRouter");
+require("dotenv").config()
+const app = express()
+app.use(express.json())
+app.use(cors())
+mongoose.connect(process.env.mongdh_ul).then(()=>{
+    console.log("database is conneted")
+})
+
+app.use(ProductRouter)
+app.use(CustomerRouter)
+app.use(OrderRouter)
+app.use(UserRouter)
+app.use(CodsiRouter)
+app.use(AdminRouter)
+app.use("/allImage",express.static("document"))
+app.listen(process.env.port,()=>console.log("server is running..."))
