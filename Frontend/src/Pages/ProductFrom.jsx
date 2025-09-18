@@ -109,7 +109,7 @@ function ProductFrom() {
         type="submit"
         className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600"
       >
-        Register Book
+        Register Product
       </button>
     </form>
   );

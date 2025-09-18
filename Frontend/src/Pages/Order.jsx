@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../Components/Header";
 
 function OrdersPage() {
   const [orders, setOrders] = useState([]);
@@ -23,7 +22,6 @@ function OrdersPage() {
 
   return (
     <>
-      <Header />
       <div className="min-h-screen bg-gray-100 p-6">
         <h1 className="text-3xl font-bold mb-6">All Orders</h1>
 

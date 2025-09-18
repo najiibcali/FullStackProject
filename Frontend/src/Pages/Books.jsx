@@ -80,7 +80,7 @@ function BookTable() {
               <td className="border p-2">{book.category}</td>
               <td className="border p-2">{book.status}</td>
               <td className="border p-2 space-x-4">
-                <Link to={`/update/book/${book._id}`}><i className="fa-solid fa-pen-to-square text-blue-600 cursor-pointer"></i></Link>
+                <Link to={`/Update/${book._id}`}><i className="fa-solid fa-pen-to-square text-blue-600 cursor-pointer"></i></Link>
                 <i onClick={()=>handledelete(book._id)} className="fa-solid fa-trash text-red-600 cursor-pointer"></i>
               </td>
             </tr>

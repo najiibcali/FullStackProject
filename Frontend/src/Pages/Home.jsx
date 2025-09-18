@@ -4,87 +4,89 @@ import imgtwo from "../assets/Banner Image.png"
 import Steps from "../Components/Steps"
 import Steps2 from "../Components/Steps2"
 import { Link } from "react-router-dom"
+
 function Home () {
-    return <>
+  return <>
     <Header/>
-    <div className="flex justify-around mt-32">
-        <div className="ml-28 anim1">
-            <h1 className="text-slate-500 text-4xl">AutoNest Moto Rent</h1>
-            <p className="text-black w-[380px] mt-10">ku soo dhawaw Meto Go waxa sheqynaa 24/7  !</p>
-            <div className="flex gap-24 mt-10 ">
-                <div className="gap-10">
-                    <h1 className="text-5xl">50+</h1>
-                    <p className="text-2xl">Moto brands</p>
+
+    {/* Hero Section */}
+    <div className="flex flex-col-reverse md:flex-row justify-around items-center mt-16 md:mt-32 px-4 md:px-20">
+        <div className="text-center md:text-left anim1 md:ml-0">
+            <h1 className="text-slate-500 text-3xl md:text-4xl font-bold">AutoNest Moto Rent</h1>
+            <p className="text-black w-full md:w-[380px] mt-6 md:mt-10">ku soo dhawaw Meto Go waxa sheqynaa 24/7!</p>
+            <div className="flex flex-col sm:flex-row gap-8 md:gap-24 mt-6 md:mt-10 justify-center md:justify-start">
+                <div className="flex flex-col gap-2 items-center md:items-start">
+                    <h1 className="text-4xl sm:text-5xl font-bold">50+</h1>
+                    <p className="text-xl sm:text-2xl">Moto brands</p>
                 </div>
-                <div className="gap-10">
-                    <h1 className="text-5xl">10k+</h1>
-                    <p className="text-2xl">cilents</p>
+                <div className="flex flex-col gap-2 items-center md:items-start">
+                    <h1 className="text-4xl sm:text-5xl font-bold">10k+</h1>
+                    <p className="text-xl sm:text-2xl">Clients</p>
                 </div>
             </div>
         </div>
-        <div className="anim2">
-            <img src={imgone} alt="" />
+        <div className="anim2 mb-10 md:mb-0">
+            <img src={imgone} alt="Moto" className="w-72 sm:w-96 md:w-auto"/>
         </div>
     </div>
 
-    <div>
+    {/* Steps Sections */}
+    <div className="px-4 md:px-20">
         <Steps2/>
-    </div>
-
-    <div>
         <Steps/>
     </div>
 
-<div className="h-96 bg-cover bg-center flex items-center justify-center mt-20"
-      style={{ backgroundImage: `url(${imgtwo})` }}  >
-        <div className="ml-[500px]">
-      <h1 className="text-white text-4xl ml-28"> Moto News</h1>
-      <p className="w-[400px] text-white mt-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corporis, dignissimos nostrum consequatur in culpa.</p>
-      <div className="mt-10">
-        <Link to="/register">
-        <button className="bg-white h-10 w-36 rounded-lg text-black text-2xl">Regesiter</button>
-        </Link>
-      </div>
-      </div>
+    {/* Banner Section */}
+    <div className="h-80 md:h-96 bg-cover bg-center flex items-center justify-center mt-12 md:mt-20 px-4 md:px-0"
+        style={{ backgroundImage: `url(${imgtwo})` }} >
+        <div className="text-center md:text-left md:ml-[500px]">
+            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">Moto News</h1>
+            <p className="w-full sm:w-[400px] text-white mt-4 sm:mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corporis, dignissimos nostrum consequatur in culpa.</p>
+            <div className="mt-4 sm:mt-6">
+                <Link to="/register">
+                    <button className="bg-white h-10 w-32 sm:w-36 rounded-lg text-black text-base sm:text-2xl">Register</button>
+                </Link>
+            </div>
+        </div>
     </div>
 
+    {/* Footer */}
+    <div className="mt-20 md:mt-36 px-4 md:px-6">
+        <footer className="bg-black text-white pt-10 pb-4">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 text-sm">
 
-      <div className="mt-36">
-        <footer className="bg-black text-white pt-10 pb-4 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 text-sm">
+                {/* About Us */}
+                <div>
+                    <h3 className="text-white font-bold mb-3">About Us</h3>
+                    <p className="text-gray-400 leading-relaxed">
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                    </p>
+                </div>
 
-        {/* About Us */}
-        <div>
-          <h3 className="text-white font-bold mb-3">About Us</h3>
-          <p className="text-gray-400 leading-relaxed">
-            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-          </p>
-        </div>
+                {/* Quick Links */}
+                {[1, 2, 3, 4].map((_, idx) => (
+                    <div key={idx}>
+                        <h3 className="text-white font-bold mb-3">Quick Links</h3>
+                        <ul className="space-y-2 text-gray-400">
+                            <li><a href="#" className="hover:text-white">About Us</a></li>
+                            <li><a href="#" className="hover:text-white">Testimonials</a></li>
+                            <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" className="hover:text-white">Privacy</a></li>
+                            <li><a href="#" className="hover:text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+                ))}
 
-        {/* Quick Links (4 Columns) */}
-        {[1, 2, 3, 4].map((_, idx) => (
-          <div key={idx}>
-            <h3 className="text-white font-bold mb-3">Quick Links</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">About Us</a></li>
-              <li><a href="#" className="hover:text-white">Testimonials</a></li>
-              <li><a href="#" className="hover:text-white">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-white">Privacy</a></li>
-              <li><a href="#" className="hover:text-white">Contact Us</a></li>
-            </ul>
-          </div>
-        ))}
+            </div>
 
-      </div>
-
-      {/* Bottom copyright */}
-      <div className="text-center mt-10 text-gray-400 text-sm border-t border-gray-700 pt-4">
-        Copyright ©2025 All rights reserved | Najiib Ali 
-        <span className="text-red-500 px-1">❤</span> 
-      </div>
-    </footer>
-
-      </div>
-    </>
+            {/* Bottom copyright */}
+            <div className="text-center mt-10 text-gray-400 text-sm border-t border-gray-700 pt-4">
+                Copyright ©2025 All rights reserved | Najiib Ali 
+                <span className="text-red-500 px-1">❤</span> 
+            </div>
+        </footer>
+    </div>
+  </>
 }
+
 export default Home

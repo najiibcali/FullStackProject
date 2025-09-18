@@ -12,20 +12,15 @@ function Shop() {
   // Add to Cart function
   const handleStoreData = (item) => {
     const Customer = localStorage.getItem("customer");
-
     if (!Customer) {
       alert("Please login first to add items to the cart");
-      navigate("/CustomerLogin"); // user aan login ahayn ayaa loo diraa login
+      navigate("/CustomerLogin");
       return;
     }
-
     const newData = JSON.parse(localStorage.getItem("product")) || [];
-
-    // check if product already exists in cart
     const existed = newData.some((prd) => prd._id === item._id);
-
     if (!existed) {
-      newData.push({ ...item, Quantity: 1 }); // default quantity = 1
+      newData.push({ ...item, Quantity: 1 });
       localStorage.setItem("product", JSON.stringify(newData));
       alert("Added to cart!");
     } else {
@@ -36,9 +31,7 @@ function Shop() {
   // Fetch products
   useEffect(() => {
     axios
-      .post("http://localhost:3000/read/product", {
-        category: category,
-      })
+      .post("http://localhost:3000/read/product", { category: category })
       .then((res) => setData(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, [category]);
@@ -46,54 +39,39 @@ function Shop() {
   return (
     <>
       <Header />
-      <div>
+      <div className="relative flex justify-end px-4 md:px-20 mt-6">
         <input
-          className="w-72 h-12 mt-10 absolute right-10 text-black border px-3"
+          className="w-full sm:w-72 h-12 text-black border px-3 rounded"
           type="text"
           placeholder="Search Your Product"
         />
       </div>
 
-      <div className="flex px-20 mt-20">
+      <div className="flex flex-col lg:flex-row px-4 md:px-20 mt-10 gap-8">
         {/* Category Filter */}
-        <div className="pt-10">
+        <div className="flex-shrink-0 bg-white p-4 rounded shadow-md">
           <label className="block mb-2 font-semibold">Filter by Rating</label>
-          <input
-            type="radio"
-            name="category"
-            value="5 Star"
-            onChange={() => setCategory("5 Star")}
-          />{" "}
-          5 Star <br />
-          <input
-            type="radio"
-            name="category"
-            value="4 Star"
-            onChange={() => setCategory("4 Star")}
-          />{" "}
-          4 Star <br />
-          <input
-            type="radio"
-            name="category"
-            value="3 Star"
-            onChange={() => setCategory("3 Star")}
-          />{" "}
-          3 Star <br />
-          <input
-            type="radio"
-            name="category"
-            value="2 Star"
-            onChange={() => setCategory("2 Star")}
-          />{" "}
-          2 Star <br />
+          <div className="flex flex-col gap-1">
+            {["5 Star", "4 Star", "3 Star", "2 Star"].map((rate) => (
+              <label key={rate} className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="category"
+                  value={rate}
+                  onChange={() => setCategory(rate)}
+                />
+                {rate}
+              </label>
+            ))}
+          </div>
         </div>
 
         {/* Product List */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ml-10">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {data.map((item) => (
             <div
               key={item._id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 p-3 w-56"
+              className="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 p-3"
             >
               {/* Product Image */}
               <div className="h-60 w-full overflow-hidden rounded mb-3">
@@ -111,7 +89,9 @@ function Shop() {
                 </h2>
                 <span
                   className={`text-xs font-bold ${
-                    item.status === "aviable" ? "text-green-500" : "text-red-500"
+                    item.status === "aviable"
+                      ? "text-green-500"
+                      : "text-red-500"
                   }`}
                 >
                   {item.status}
